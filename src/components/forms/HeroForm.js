@@ -28,24 +28,28 @@ export default function HeroForm({user}){
            }
         }
     }
-    return(
-        <form 
-        onSubmit={handleSubmit}
-        className="inline-flex items-center bg-white shadow-lg shadow-gray-500/20">
-        <span className="bg-whte py-4 pl-4">
-          LinkConnect.to/
-        </span>
-        <input
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        type = 'text' 
-        className="py-4"
-        style={{backgroundColor: 'white',marginBottom:0,paddingLeft:0}}
-        placeholder="username"/>
-        <button type="submit" className="bg-blue-500 text-white py-4 px-6 cursor-pointer whitespace-nowrap">
-          Join for free
-        </button>
+    return (
+      <form 
+        onSubmit={handleSubmit} 
+        className="inline-flex items-center bg-white shadow-lg shadow-gray-500/20 max-w-full overflow-x-auto transform scale-90 sm:scale-100"
+      > 
+        <span className="bg-white py-4 pl-2 text-sm sm:text-base whitespace-nowrap"> 
+          LinkConnect.to/ 
+        </span> 
+        <input 
+          value={username} 
+          onChange={(e) => setUsername(e.target.value)} 
+          type="text" 
+          className="py-4 min-w-0 flex-1"
+          style={{backgroundColor: 'white', marginBottom: 0, paddingLeft: 0}}
+          placeholder="username"
+        /> 
+        <button 
+          type="submit" 
+          className="bg-blue-500 text-white py-4 px-2 sm:px-6 cursor-pointer whitespace-nowrap"
+        > 
+          Join for free 
+        </button> 
       </form>
-
     )
 }

@@ -20,7 +20,7 @@ export const allButtons = [
     { key: 'email', 'label': 'e-mail', icon: faEnvelope, placeholder: 'test@example.com' },
     { key: 'mobile', 'label': 'mobile', icon: faMobile, placeholder: '+91 1231231231' },
     { key: 'instagram', 'label': 'instagram', icon: faInstagram, placeholder: 'https://instagram.com/profile/...' },
-    { key: 'linkedin', 'label': 'linkedin', icon: faLinkedin},
+    { key: 'linkedin', 'label': 'linkedin', icon: faLinkedin },
     { key: 'facebook', 'label': 'facebook', icon: faFacebook },
     { key: 'discord', 'label': 'discord', icon: faDiscord },
     { key: 'tiktok', 'label': 'tiktok', icon: faTiktok },
@@ -33,7 +33,7 @@ export const allButtons = [
 
 export default function PageButtonForm({ user, page }) {
 
-    const pageSavedButtonsKey = Object.keys(page.buttons || {});  
+    const pageSavedButtonsKey = Object.keys(page.buttons || {});
 
     const pageSavedButtonsInfo = pageSavedButtonsKey.map(key => allButtons.find(b => b.key === key))
     const [activeButtons, setActiveButtons] = useState(pageSavedButtonsInfo);
@@ -88,19 +88,19 @@ export default function PageButtonForm({ user, page }) {
                         </div>
                     </div>
                 ))}
-                <div className="flex flex-wrap gap-2 mt-4 border-y p-4">
-                    {availabeButtons.map(b => (
+                <div className="flex flex-wrap gap-2 mt-4 border-y p-4 justify-center sm:justify-start">
+                    {availabeButtons.map((b) => (
                         <button
                             type="button"
                             key={b.key}
                             onClick={() => addButtonToProfile(b)}
-                            className="flex items-center gap-1 p-2 bg-gray-200">
+                            className="flex items-center justify-center gap-2 px-4 py-2 bg-gray-200 rounded-md text-sm w-full sm:w-auto sm:min-w-[140px] text-gray-700 hover:bg-gray-300 transition"
+                        >
                             <FontAwesomeIcon icon={b.icon} />
                             <span className="first-letter:uppercase">{b.label}</span>
                             <FontAwesomeIcon icon={faPlus} />
                         </button>
                     ))}
-
                 </div>
                 <div className="max-w-[200px] mx-auto p-2 ">
                     <SubmitButton>
