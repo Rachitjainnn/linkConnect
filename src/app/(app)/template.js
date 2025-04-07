@@ -21,7 +21,6 @@ export const metadata = {
 };
 
 export default async function AppTemplate({ children }) {
-  // const headerList = headers()
   const session = await getServerSession(authOptions)
   if (!session) return redirect('/')
   await dbConnect()

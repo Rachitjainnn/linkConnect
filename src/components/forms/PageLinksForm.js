@@ -9,12 +9,11 @@ import toast from "react-hot-toast"
 import uniqid from 'uniqid';
 
 export default function PageLinksForm({ user, page }) {
-    // Convert incoming links to ensure they all have unique keys
     const [links, setLinks] = useState(() => {
         const pageLinks = page.links || [];
         return pageLinks.map(link => ({
             ...link,
-            key: link.key || uniqid() // Ensure each link has a unique key
+            key: link.key || uniqid()
         }));
     });
     
