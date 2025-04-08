@@ -5,45 +5,52 @@ import { Page } from "@/models/Page";
 import dbConnect from "@/libs/mongoose";
 
 export default async function Home() {
-
-  await dbConnect()
+  await dbConnect();
   const session = await getServerSession(authOptions);
-  const page = await Page.findOne({owner:session.user.email})
-  
+
+  let page = null;
+  if (session) {
+    page = await Page.findOne({ owner: session.user.email });
+  }
+
   return (
     <>
       {session ? (
         <div className="px-4 md:px-6 py-12">
-  <h1 className="text-3xl font-bold mb-4">Welcome back, {session.user.name || "there"} 👋</h1>
-  <p className="text-gray-600 mb-6">Here's a quick look at your LinkConnect profile.</p>
+          <h1 className="text-3xl font-bold mb-4">
+            Welcome back, {session.user.name || "there"} 👋
+          </h1>
+          <p className="text-gray-600 mb-6">
+            Here's a quick look at your LinkConnect profile.
+          </p>
 
-  <div className="bg-white rounded-2xl shadow-md p-6 mb-6">
-    <h2 className="text-xl font-semibold mb-2">Your LinkConnect Page</h2>
-    <div className="mb-4">
-      <p className="text-gray-700">Your public link:</p>
-      <div className="flex items-center gap-2 mt-2">
-        <span className="text-blue-600 underline">{`https://rachit-linkconnect.vercel.app/${page.uri}`}</span>
-        <button className="px-2 py-1 text-sm border rounded hover:bg-gray-100">Copy</button>
-      </div>
-    </div>
-    <div className="flex gap-4 mt-4">
-      <a
-        href={`/${page.uri}`}
-        className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-      >
-        View Page
-      </a>
-      <a
-        href="/account"
-        className="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition"
-      >
-        Edit Profile
-      </a>
-    </div>
-  </div>
-
-</div>
-
+          <div className="bg-white rounded-2xl shadow-md p-6 mb-6">
+            <h2 className="text-xl font-semibold mb-2">Your LinkConnect Page</h2>
+            <div className="mb-4">
+              <p className="text-gray-700">Your public link:</p>
+              <div className="flex items-center gap-2 mt-2">
+                <span className="text-blue-600 underline">
+                  {`https://rachit-linkconnect.vercel.app/${page?.uri || ""}`}
+                </span>
+                <button className="px-2 py-1 text-sm border rounded hover:bg-gray-100">Copy</button>
+              </div>
+            </div>
+            <div className="flex gap-4 mt-4">
+              <a
+                href={`/${page?.uri || ""}`}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+              >
+                View Page
+              </a>
+              <a
+                href="/account"
+                className="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition"
+              >
+                Edit Profile
+              </a>
+            </div>
+          </div>
+        </div>
       ) : (
         <main className="px-4 md:px-6 flex items-center justify-center">
           <section className="pt-16 md:pt-24 lg:pt-32">
@@ -61,7 +68,6 @@ export default async function Home() {
             </div>
           </section>
         </main>
-
       )}
     </>
   );
