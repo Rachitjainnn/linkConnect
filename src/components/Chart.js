@@ -5,7 +5,10 @@ import {CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XA
 
 
 export default function Chart({data}) {
-  const xLabelKey = Object.keys(data[0]).find(key => key !== 'date');
+  console.log("data", data);
+  
+  const xLabelKey = data?.[0] ? Object.keys(data[0]).find(key => key !== 'date') : null;
+
 
   const dataWithoutGaps = [];
   data.forEach((value, index) => {

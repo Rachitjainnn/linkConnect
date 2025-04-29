@@ -32,6 +32,7 @@ export const allButtons = [
 
 
 export default function PageButtonForm({ user, page }) {
+    
 
     const pageSavedButtonsKey = Object.keys(page.buttons || {});
 
@@ -75,7 +76,7 @@ export default function PageButtonForm({ user, page }) {
                             <input
                                 name={b.key}
                                 type="text"
-                                defaultValue={page.buttons[b.key]}
+                                defaultValue={page.buttons?.[b.key] || ''}
                                 placeholder={b.placeholder}
                                 style={{ marginBottom: '0' }}
                             />
