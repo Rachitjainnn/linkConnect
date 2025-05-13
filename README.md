@@ -2,6 +2,8 @@
 
 **linkConnect** is a full-stack web application that lets users create a personalized page to share all their important links. It supports Google login via NextAuth, background uploads to AWS S3, and an analytics dashboard built with Chart.js. Deployed on Vercel.
 
+---
+
 ## 🚀 Features
 
 - 🔗 Centralized personal link-sharing page  
@@ -10,6 +12,8 @@
 - 📊 Real-time analytics (clicks, visitors) via Chart.js  
 - ⚡ Clean and responsive UI with Tailwind CSS  
 - ☁️ Deployed on Vercel with environment-based config  
+
+---
 
 ## 🛠 Tech Stack
 
@@ -25,6 +29,8 @@
 - NextAuth (Google Provider)  
 - AWS S3 (image storage)  
 
+---
+
 ## 📁 Folder Structure
 
 /src
@@ -33,6 +39,8 @@
 ├── components # Reusable UI components
 ├── libs # Utility functions (e.g., AWS S3, DB, query clients)
 ├── models # MongoDB models (e.g., User, Link)
+
+---
 
 ## 📦 Getting Started
 
